@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>INDEX</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center; /* 水平居中 */
+        align-items: center; /* 垂直居中 */
+        min-height: 90vh;
+        min-width: 100vw;
+        margin: 0px;
+        padding: 0px;
+        font-family: sans-serif;
+      }
+      a,
+      a:visited {
+        text-decoration: none;
+        font-size: 1.2em;
+        color: #555555;
+      }
+      a:hover {
+        text-shadow: 1px 2px 3px rgba(117, 117, 222, 0.4);
+      }
+      div {
+        margin: 10px;
+      }
+      .container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+        grid-auto-rows: minmax(100px, auto);
+      }
+      .item {
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      window.onload = function() {
+        var xmlhttp;
+        xmlhttp = window.XMLHttpRequest
+          ? new XMLHttpRequest()
+          : new ActiveXObject("Microsoft.XMLHTTP");
+        xmlhttp.onreadystatechange = function() {
+          if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var dom = document.createElement("div");
+            dom.className = "container";
+            JSON.parse(xmlhttp.responseText).forEach(Element => {
+              let child = document.createElement("div");
+              child.className = "item";
+              child.innerHTML = `<a href="${Element}">${Element}</a>`;
+              dom.appendChild(child);
+            });
+            document.body.appendChild(dom);
+          }
+        };
+        xmlhttp.open("GET", "/api", true);
+        xmlhttp.send();
+      };
+    </script>
+  </body>
+</html>

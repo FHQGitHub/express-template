@@ -1,5 +1,4 @@
 {
-
   "name": "aerosimulate",
   "version": "1.0.0",
   "description": "",
@@ -10,7 +9,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "serve": "node index.js",
+    "serve": "forever start index.js",
     "dev": "node start.js && node index.js",
     "pkg": "pkg index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -22,6 +21,6 @@
     "express": "^4.16.3",
     "http-error": "0.0.6",
     "http-errors": "^1.7.0",
-    "morgan": "^1.9.0"
+    "morgan": "^1.9.1"
   }
 }
